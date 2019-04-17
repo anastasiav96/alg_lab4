@@ -8,6 +8,7 @@ from statistics import mean
 import numpy as np
 from selection_sort import selection_sort
 from insertion_sort import insertion_sort
+from qsort import qsort
 
 def measure_search_time(sort_function, sz, repeats):
     """
@@ -29,7 +30,8 @@ def main():
         'np_quicksort': lambda a: np.sort(a, kind='quicksort'),
         'np_mergesort': lambda a: np.sort(a, kind='mergesort'),
         'np_insertionsort': lambda a: insertion_sort(a),
-        'np_selectionsort': lambda a: selection_sort(a)
+        'np_selectionsort': lambda a: selection_sort(a),
+        'np_qsort': lambda a: qsort(a)
         
     }
 
@@ -42,6 +44,7 @@ def main():
     for alg_name in algorithms:
         plt.plot(sizes, avg_time[alg_name], label=alg_name)
     plt.legend()
+    plt.ylim(0.1)
     plt.show()
 
 
